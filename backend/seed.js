@@ -8,7 +8,7 @@ const seedData = [
   {
       name: "Premium Roasted Cashews",
       description: "Golden roasted whole cashews with a rich, buttery flavor. Perfectly crunchy and lightly seasoned.",
-      image: "/src/assets/product-roasted.jpg",
+      image: "/product-roasted.jpg",
       category: "Roasted",
       featured: true,
       variants: [
@@ -20,7 +20,7 @@ const seedData = [
   {
       name: "Natural Raw Cashews",
       description: "Pure, unprocessed cashew nuts straight from the farm. Ideal for cooking and healthy snacking.",
-      image: "/src/assets/product-raw.jpg",
+      image: "/product-raw.jpg",
       category: "Raw",
       featured: true,
       variants: [
@@ -32,7 +32,7 @@ const seedData = [
   {
       name: "Honey Glazed Cashews",
       description: "Sweet honey-coated cashews with a delightful crunch. A perfect blend of natural sweetness.",
-      image: "/src/assets/product-honey.jpg",
+      image: "/product-honey.jpg",
       category: "Flavored",
       featured: true,
       variants: [
@@ -44,7 +44,7 @@ const seedData = [
   {
       name: "Spicy Masala Cashews",
       description: "Bold and zesty cashews seasoned with traditional Indian spices. A fiery snack experience.",
-      image: "/src/assets/product-masala.jpg",
+      image: "/product-masala.jpg",
       category: "Flavored",
       featured: false,
       variants: [
@@ -56,7 +56,7 @@ const seedData = [
   {
       name: "Classic Salted Cashews",
       description: "Lightly salted premium cashews in a convenient resealable pouch. Perfect for any occasion.",
-      image: "/src/assets/product-salted.jpg",
+      image: "/product-salted.jpg",
       category: "Salted",
       featured: false,
       variants: [
@@ -68,7 +68,7 @@ const seedData = [
   {
       name: "Chocolate Cashews",
       description: "Rich dark chocolate-coated cashews. An indulgent treat combining nutty and cocoa flavors.",
-      image: "/src/assets/product-chocolate.jpg",
+      image: "/product-chocolate.jpg",
       category: "Premium",
       featured: true,
       variants: [

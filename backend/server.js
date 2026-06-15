@@ -13,42 +13,7 @@ app.use(express.json());
 // MongoDB Connection
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://mathiyazhagan907_db_user:1234@cluster0.y7ftvp4.mongodb.net/?appName=Cluster0";
 
-// Sync offline JSON database data to MongoDB
-async function syncOfflineData() {
-  try {
-    const fs = require('fs');
-    const path = require('path');
-    const Order = require('./models/Order');
 
-    const ordersFile = path.join(__dirname, 'data', 'orders.json');
-
-    // Sync Orders
-    if (fs.existsSync(ordersFile)) {
-      const offlineOrders = JSON.parse(fs.readFileSync(ordersFile, 'utf8'));
-      let syncedOrdersCount = 0;
-      for (const ord of offlineOrders) {
-        try {
-          const exists = await Order.findById(ord._id);
-          if (!exists) {
-            const newOrd = new Order(ord);
-            await newOrd.save();
-            syncedOrdersCount++;
-          }
-        } catch (itemErr) {
-          // Ignore duplicate key errors (code 11000)
-          if (itemErr.code !== 11000) {
-            console.error(`❌ Error syncing order ${ord._id}:`, itemErr.message);
-          }
-        }
-      }
-      if (syncedOrdersCount > 0) {
-        console.log(`✅ Synced ${syncedOrdersCount} orders from JSON file to MongoDB`);
-      }
-    }
-  } catch (err) {
-    console.error('❌ Error syncing offline data to MongoDB:', err.message);
-  }
-}
 
 // Automatically seed products if empty, and ensure image paths are corrected
 async function seedAndFixProducts() {
@@ -162,8 +127,6 @@ async function seedAndFixProducts() {
 mongoose.connect(MONGODB_URI)
   .then(async () => {
     console.log('Connected to MongoDB Successfully!');
-    // Automatically migrate/sync offline JSON database records to MongoDB
-    await syncOfflineData();
     // Automatically seed products if needed or fix image paths
     await seedAndFixProducts();
   })
